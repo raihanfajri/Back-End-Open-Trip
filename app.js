@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var trip  = require('./routes/trip');
 var rooms = require('./routes/rooms');
+const fileUpload = require('express-fileupload');
 
 var app = express();
 
@@ -20,7 +21,7 @@ app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,6 +31,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+app.use(fileUpload());
 app.use('/', index);
 app.use('/users', users);
 app.use('/trip', trip);

@@ -51,5 +51,15 @@ router.post('/contactlist',function(req,res){
     }
   });
 });
+router.post('/gettripadmin',function(req,res){
+  conn('users').where('idUser',req.body.idUser).asCallback(function(err,hasil){
+    if(err == null){
+      res.send(JSON.stringify(hasil));
+    }
+    else{
+      console.log("error ");
+    }
+  });
+});
 
 module.exports = router;

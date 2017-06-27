@@ -2,11 +2,15 @@ var conn = require('../connect');
 
 class post{
   constructor(){
+    this.idtrip = 0;
     this.postname = '';
     this.idadmin = 0;
     this.asal = '';
     this.tujuan = '';
     this.tanggal = '';
+    this.budget = 0;
+    this.kapasitas = 0;
+    this.sisa = 0;
     this.detail = '';
     this.foto = '';
     this.meetingpoint = '';
@@ -17,7 +21,11 @@ class post{
     this.asal = data.asal;
     this.tujuan = data.tujuan;
     this.tanggal = data.tanggal;
+    this.budget = data.budget;
+    this.kapasitas = data.kapasitas;
     this.detail = data.detail;
+    this.foto = data.foto;
+    this.sisa = data.sisa;
   }
   getpostname(){
     return this.postname;
@@ -34,21 +42,29 @@ class post{
   gettanggal(){
     return this.tanggal;
   }
+  getbudget(){
+    return this.budget;
+  }
+  getkapasitas(){
+    return this.kapasitas;
+  }
+  getsisa(){
+    return this.sisa;
+  }
   getdetail(){
     return this.detail;
   }
-  // semuapost(callback){
-  //   conn('trip').orderBy('idtrip','desc').asCallback(callback);
-  // }
-  // searchpost(name,callback){
-  //   conn('trip').where('tripname','like',name).asCallback(callback);
-  // }
-  // kategoripost(name,callback){
-  //   conn('trip').where('id_kategori',name).asCallback(callback);
-  // }
-  // createpost(callback){
-  //   conn('trip').insert({tripname:this.postname,tripadminid:this.idadmin,asal:this.asal,tujuan:this.tujuan,tanggalberangkat:this.tanggal,detail:this.detail}).asCallback(callback);
-  // }
-
+  getfoto(){
+    return this.foto;
+  }
+  setfoto(name){
+    this.foto = name;
+  }
+  setidtrip(id){
+    this.idtrip = id;
+  }
+  getidtrip(){
+    return this.idtrip;
+  }
 }
 module.exports = post;
